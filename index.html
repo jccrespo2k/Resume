@@ -8,93 +8,118 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --color-bg:#ffffff;
-  --color-bg-secondary:#f8f9fa;
-  --color-text-primary:#1a1a1a;
-  --color-text-secondary:#555;
-  --color-text-tertiary:#888;
-  --color-border:#e0e0e0;
-  --color-border-secondary:#ccc;
-  --color-blue:#185FA5;
-  --color-blue-light:#E6F1FB;
-  --color-blue-mid:#378ADD;
-  --color-blue-dark:#0C447C;
-  --radius-md:8px;
-  --radius-lg:12px;
+  --bg:#ffffff;--bg2:#f5f6f8;--bg3:#eef0f4;
+  --text:#1a1a1a;--text2:#555;--text3:#888;
+  --border:#e0e0e0;--border2:#ccc;
+  --blue:#185FA5;--blue-l:#E6F1FB;--blue-m:#378ADD;--blue-d:#0C447C;
+  --r:8px;--rl:12px;
 }
-@media(prefers-color-scheme:dark){
-  :root{
-    --color-bg:#1a1a1a;
-    --color-bg-secondary:#242424;
-    --color-text-primary:#f0f0f0;
-    --color-text-secondary:#aaa;
-    --color-text-tertiary:#666;
-    --color-border:#333;
-    --color-border-secondary:#444;
-    --color-blue-light:#0d2a45;
-    --color-blue-dark:#85B7EB;
-  }
+[data-theme="dark"]{
+  --bg:#181818;--bg2:#222;--bg3:#2a2a2a;
+  --text:#f0f0f0;--text2:#aaa;--text3:#666;
+  --border:#333;--border2:#444;
+  --blue:#378ADD;--blue-l:#0d2840;--blue-m:#85B7EB;--blue-d:#B5D4F4;
 }
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--color-bg);color:var(--color-text-primary);line-height:1.6}
-.cv-wrap{max-width:860px;margin:0 auto;padding:2rem 1.5rem}
-.hero{padding:2rem 0 1.5rem;border-bottom:2px solid var(--color-border)}
-.hero-name{font-size:32px;font-weight:600;color:var(--color-text-primary);letter-spacing:-0.5px}
-.hero-title{font-size:15px;color:var(--color-text-secondary);margin-top:6px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .2s,color .2s}
+.cv-wrap{max-width:880px;margin:0 auto;padding:2rem 1.5rem}
+
+/* TOP BAR */
+.topbar{display:flex;justify-content:flex-end;gap:10px;margin-bottom:1rem;align-items:center}
+.toggle-btn{display:flex;align-items:center;gap:6px;padding:6px 14px;border:1px solid var(--border2);border-radius:99px;background:var(--bg2);color:var(--text2);font-size:12px;cursor:pointer;transition:all .15s}
+.toggle-btn:hover{background:var(--bg3);color:var(--text)}
+.toggle-btn i{font-size:14px}
+.lang-active{background:var(--blue-l);color:var(--blue);border-color:var(--blue-m)}
+
+/* HERO */
+.hero{padding:2rem 0 1.5rem;border-bottom:2px solid var(--border)}
+.hero-name{font-size:32px;font-weight:600;color:var(--text);letter-spacing:-0.5px}
+.hero-title{font-size:15px;color:var(--text2);margin-top:6px}
 .hero-contact{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px}
-.contact-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-secondary);text-decoration:none}
-.contact-item i{font-size:14px;color:var(--color-text-tertiary)}
-.nav-tabs{display:flex;gap:4px;margin:1.5rem 0 0;border-bottom:1px solid var(--color-border);overflow-x:auto}
-.tab-btn{padding:8px 16px;font-size:13px;font-weight:500;color:var(--color-text-secondary);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all .15s}
-.tab-btn:hover{color:var(--color-text-primary)}
-.tab-btn.active{color:var(--color-blue);border-bottom-color:var(--color-blue)}
-.tab-panel{display:none;padding:1.5rem 0}
+.contact-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text2);text-decoration:none}
+.contact-item:hover{color:var(--blue)}
+.contact-item i{font-size:14px;color:var(--text3)}
+
+/* TABS */
+.nav-tabs{display:flex;gap:2px;margin:1.5rem 0 0;border-bottom:1px solid var(--border);overflow-x:auto}
+.tab-btn{padding:8px 16px;font-size:13px;font-weight:500;color:var(--text2);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all .15s}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
+.tab-panel{display:none;padding:1.5rem 0;animation:fadeIn .2s}
 .tab-panel.active{display:block}
-.section-label{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--color-text-tertiary);text-transform:uppercase;margin-bottom:1rem;padding-bottom:6px;border-bottom:1px solid var(--color-border)}
-.summary-box{background:var(--color-bg-secondary);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;font-size:15px;line-height:1.75;color:var(--color-text-primary)}
-.summary-box strong{font-weight:600;color:var(--color-blue)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.section-label{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--text3);text-transform:uppercase;margin-bottom:1rem;padding-bottom:6px;border-bottom:1px solid var(--border)}
+
+/* SUMMARY */
+.summary-box{background:var(--bg2);border-radius:var(--rl);padding:1.25rem 1.5rem;font-size:15px;line-height:1.8;color:var(--text)}
+.summary-box strong{font-weight:600;color:var(--blue)}
 .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:1.5rem}
-.metric-card{background:var(--color-bg-secondary);border-radius:var(--radius-md);padding:1rem;text-align:center}
-.metric-num{font-size:28px;font-weight:600;color:var(--color-blue)}
-.metric-lbl{font-size:12px;color:var(--color-text-secondary);margin-top:4px;line-height:1.4}
+.metric-card{background:var(--bg2);border-radius:var(--r);padding:1rem;text-align:center}
+.metric-num{font-size:28px;font-weight:600;color:var(--blue)}
+.metric-lbl{font-size:12px;color:var(--text2);margin-top:4px;line-height:1.4}
+
+/* SKILLS */
 .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.skill-group{background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1rem 1.25rem}
-.skill-group-title{font-size:12px;font-weight:600;color:var(--color-blue);margin-bottom:10px;letter-spacing:.04em}
-.skill-tag{display:inline-block;background:var(--color-blue-light);color:var(--color-blue-dark);font-size:12px;padding:3px 10px;border-radius:99px;margin:3px 2px}
-.exp-item{border-left:2px solid var(--color-border);padding-left:1.25rem;margin-bottom:1.75rem;position:relative}
-.exp-item::before{content:'';position:absolute;left:-5px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--color-blue)}
-.exp-company{font-size:16px;font-weight:600;color:var(--color-text-primary)}
-.exp-role{font-size:14px;color:var(--color-blue);margin-top:2px}
-.exp-period{font-size:12px;color:var(--color-text-tertiary);margin-top:2px}
+.skill-group{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:1rem 1.25rem}
+.skill-group-title{font-size:12px;font-weight:600;color:var(--blue);margin-bottom:10px}
+.skill-tag{display:inline-block;background:var(--blue-l);color:var(--blue-d);font-size:12px;padding:3px 10px;border-radius:99px;margin:3px 2px}
+
+/* EXPERIENCE */
+.exp-item{border-left:2px solid var(--border);padding-left:1.25rem;margin-bottom:1.75rem;position:relative}
+.exp-item::before{content:'';position:absolute;left:-5px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.exp-company{font-size:16px;font-weight:600;color:var(--text)}
+.exp-role{font-size:14px;color:var(--blue);margin-top:2px}
+.exp-period{font-size:12px;color:var(--text3);margin-top:2px}
+.exp-type{display:inline-block;font-size:11px;background:var(--bg3);color:var(--text2);padding:1px 8px;border-radius:99px;margin-left:8px;vertical-align:middle}
 .exp-bullets{margin-top:10px;list-style:none}
-.exp-bullets li{font-size:14px;color:var(--color-text-primary);line-height:1.6;padding:3px 0 3px 14px;position:relative}
-.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--color-blue-mid);font-size:12px;top:4px}
-.badge{display:inline-flex;align-items:center;gap:4px;background:var(--color-blue-light);color:var(--color-blue);font-size:11px;padding:2px 8px;border-radius:99px;margin-left:8px;vertical-align:middle}
-.presales-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.presales-card{background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1.25rem}
-.presales-card.featured{border:2px solid var(--color-blue-mid)}
-.presales-card .card-icon{font-size:22px;color:var(--color-blue-mid);margin-bottom:10px}
-.presales-card h3{font-size:14px;font-weight:600;color:var(--color-text-primary);margin-bottom:8px}
-.presales-card p{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
-.value-prop{margin-top:1rem;padding:1rem;background:var(--color-blue-light);border-radius:var(--radius-md)}
-.value-prop .vp-label{font-size:11px;color:var(--color-blue);font-weight:600;margin-bottom:4px}
-.value-prop .vp-text{font-size:13px;color:var(--color-blue-dark);line-height:1.5}
-.cert-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
-.cert-item{display:flex;align-items:flex-start;gap:10px;background:var(--color-bg-secondary);border-radius:var(--radius-md);padding:12px}
-.cert-item i{font-size:18px;color:var(--color-blue-mid);flex-shrink:0;margin-top:2px}
-.cert-text{font-size:13px;color:var(--color-text-primary);line-height:1.5}
-.ats-section{background:var(--color-bg-secondary);border-radius:var(--radius-lg);padding:1.25rem 1.5rem}
-.ats-intro{font-size:13px;color:var(--color-text-secondary);margin-bottom:1rem;line-height:1.6}
+.exp-bullets li{font-size:14px;color:var(--text);line-height:1.6;padding:3px 0 3px 16px;position:relative}
+.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--blue-m);font-size:12px;top:4px}
+.badge{display:inline-flex;align-items:center;gap:4px;background:var(--blue-l);color:var(--blue);font-size:11px;padding:2px 8px;border-radius:99px;margin-left:8px;vertical-align:middle}
+
+/* PRESALES */
+.presales-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+.presales-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:1.25rem}
+.presales-card.featured{border:2px solid var(--blue-m)}
+.card-icon{font-size:22px;color:var(--blue-m);margin-bottom:10px}
+.presales-card h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px}
+.presales-card p{font-size:13px;color:var(--text2);line-height:1.6}
+.value-prop{margin-top:1rem;padding:.85rem 1rem;background:var(--blue-l);border-radius:var(--r)}
+.vp-label{font-size:11px;color:var(--blue);font-weight:600;margin-bottom:4px}
+.vp-text{font-size:13px;color:var(--blue-d);line-height:1.5}
+
+/* ATS */
+.ats-section{background:var(--bg2);border-radius:var(--rl);padding:1.25rem 1.5rem}
+.ats-intro{font-size:13px;color:var(--text2);margin-bottom:1rem;line-height:1.6}
 .ats-keywords{display:flex;flex-wrap:wrap;gap:8px}
-.ats-kw{background:var(--color-bg);border:1px solid var(--color-border-secondary);color:var(--color-text-primary);font-size:12px;padding:4px 12px;border-radius:99px}
-.ats-kw.primary{background:var(--color-blue-light);border-color:var(--color-blue-mid);color:var(--color-blue-dark);font-weight:600}
-footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:var(--color-text-tertiary);border-top:1px solid var(--color-border);margin-top:2rem}
+.ats-kw{background:var(--bg);border:1px solid var(--border2);color:var(--text);font-size:12px;padding:4px 12px;border-radius:99px}
+.ats-kw.primary{background:var(--blue-l);border-color:var(--blue-m);color:var(--blue-d);font-weight:600}
+.cert-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:10px;margin-top:1.25rem}
+.cert-item{display:flex;align-items:flex-start;gap:10px;background:var(--bg2);border-radius:var(--r);padding:12px}
+.cert-item i{font-size:18px;color:var(--blue-m);flex-shrink:0;margin-top:2px}
+.cert-text{font-size:13px;color:var(--text);line-height:1.5}
+
+footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:var(--text3);border-top:1px solid var(--border);margin-top:2rem}
+@media(max-width:600px){.hero-name{font-size:24px}.tab-btn{padding:6px 10px;font-size:12px}}
 </style>
 </head>
 <body>
 <div class="cv-wrap">
+
+  <div class="topbar">
+    <button class="toggle-btn" id="theme-btn" onclick="toggleTheme()">
+      <i class="ti ti-moon" id="theme-icon"></i>
+      <span id="theme-label">Dark mode</span>
+    </button>
+    <button class="toggle-btn" id="lang-es" onclick="setLang('es')">
+      <span>🇲🇽</span> ES
+    </button>
+    <button class="toggle-btn" id="lang-en" onclick="setLang('en')">
+      <span>🇺🇸</span> EN
+    </button>
+  </div>
+
   <div class="hero">
     <div class="hero-name">Juan Carlos Crespo Rojas</div>
-    <div class="hero-title">SAP Pre-Sales Analytics Specialist &nbsp;·&nbsp; BPC · SAC · Datasphere · S/4HANA Embedded Analytics</div>
+    <div class="hero-title" id="hero-title">SAP Pre-Sales Analytics Specialist &nbsp;·&nbsp; BPC · SAC · Datasphere · S/4HANA Embedded Analytics</div>
     <div class="hero-contact">
       <a class="contact-item" href="mailto:juan.crespo@syntax.com"><i class="ti ti-mail"></i> juan.crespo@syntax.com</a>
       <span class="contact-item"><i class="ti ti-device-mobile"></i> +52 552 767 5854</span>
@@ -103,127 +128,204 @@ footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:var(--color-te
     </div>
   </div>
 
-  <div class="nav-tabs">
-    <button class="tab-btn active" onclick="showTab('summary',this)">Resumen</button>
-    <button class="tab-btn" onclick="showTab('presales',this)">Valor Pre-Sales</button>
-    <button class="tab-btn" onclick="showTab('experience',this)">Experiencia</button>
-    <button class="tab-btn" onclick="showTab('skills',this)">Skills & Tech</button>
-    <button class="tab-btn" onclick="showTab('ats',this)">ATS Keywords</button>
+  <div class="nav-tabs" id="nav-tabs">
+    <button class="tab-btn active" onclick="showTab('summary',this)" data-es="Resumen" data-en="Summary">Resumen</button>
+    <button class="tab-btn" onclick="showTab('presales',this)" data-es="Valor Pre-Sales" data-en="Pre-Sales Value">Valor Pre-Sales</button>
+    <button class="tab-btn" onclick="showTab('experience',this)" data-es="Experiencia" data-en="Experience">Experiencia</button>
+    <button class="tab-btn" onclick="showTab('skills',this)" data-es="Skills & Tech" data-en="Skills & Tech">Skills & Tech</button>
+    <button class="tab-btn" onclick="showTab('ats',this)" data-es="ATS Keywords" data-en="ATS Keywords">ATS Keywords</button>
   </div>
 
-  <!-- RESUMEN -->
+  <!-- ===== RESUMEN / SUMMARY ===== -->
   <div id="tab-summary" class="tab-panel active">
     <div class="summary-box">
-      SAP Analytics specialist con <strong>20+ años</strong> entregando soluciones de alto impacto en SAP BPC, SAC, Datasphere y BI/BW a clientes Fortune 500 en hospitality, manufactura y energía. Reconocido por traducir complejidad técnica en propuestas de valor claras para ejecutivos y equipos de finanzas, reduciendo ciclos de cierre hasta <strong>40%</strong> y acelerando la toma de decisiones estratégicas. Experiencia en descubrimiento de necesidades del cliente, diseño de arquitecturas de solución, y presentaciones ejecutivas — las tres columnas de un Pre-Sales Analytics Specialist efectivo.
+      <span class="es-text">SAP Analytics specialist con <strong>20+ años</strong> entregando soluciones de alto impacto en SAP BPC, SAC, Datasphere y BI/BW a clientes Fortune 500 en hospitality, manufactura, retail y energía. Reconocido por traducir complejidad técnica en propuestas de valor claras para ejecutivos, reduciendo ciclos de cierre hasta <strong>40%</strong> y acelerando decisiones estratégicas. Experiencia sólida en discovery de necesidades del cliente, diseño de arquitecturas de solución, demos ejecutivos y presentaciones a C-level — las columnas de un Pre-Sales Analytics Specialist efectivo.</span>
+      <span class="en-text" style="display:none">SAP Analytics specialist with <strong>20+ years</strong> delivering high-impact solutions in SAP BPC, SAC, Datasphere, and BI/BW for Fortune 500 clients across hospitality, manufacturing, retail, and energy. Known for translating technical complexity into clear executive value propositions, reducing manual effort by up to <strong>40%</strong> and accelerating strategic decision-making. Proven experience in client discovery, solution architecture, executive demos, and C-level presentations — the pillars of an effective Pre-Sales Analytics Specialist.</span>
     </div>
     <div class="metrics-grid">
-      <div class="metric-card"><div class="metric-num">20+</div><div class="metric-lbl">Años en SAP Analytics & EPM</div></div>
-      <div class="metric-card"><div class="metric-num">40%</div><div class="metric-lbl">Reducción de esfuerzo manual en reporting</div></div>
-      <div class="metric-card"><div class="metric-num">10+</div><div class="metric-lbl">Implementaciones SAP BPC / SAC entregadas</div></div>
-      <div class="metric-card"><div class="metric-num">5</div><div class="metric-lbl">Industrias: hospitality, retail, banca, energía, manufactura</div></div>
+      <div class="metric-card"><div class="metric-num">20+</div><div class="metric-lbl es-text">Años en SAP Analytics & EPM</div><div class="metric-lbl en-text" style="display:none">Years in SAP Analytics & EPM</div></div>
+      <div class="metric-card"><div class="metric-num">40%</div><div class="metric-lbl es-text">Reducción de esfuerzo manual en reporting</div><div class="metric-lbl en-text" style="display:none">Reduction in manual reporting effort</div></div>
+      <div class="metric-card"><div class="metric-num">10+</div><div class="metric-lbl es-text">Implementaciones SAP BPC / SAC entregadas</div><div class="metric-lbl en-text" style="display:none">SAP BPC / SAC implementations delivered</div></div>
+      <div class="metric-card"><div class="metric-num">6</div><div class="metric-lbl es-text">Industrias: hospitality, retail, banca, energía, manufactura, salud</div><div class="metric-lbl en-text" style="display:none">Industries: hospitality, retail, banking, energy, manufacturing, pharma</div></div>
     </div>
   </div>
 
-  <!-- PRESALES -->
+  <!-- ===== PRE-SALES VALUE ===== -->
   <div id="tab-presales" class="tab-panel">
-    <div class="section-label">Por qué Juan Carlos es el pre-sales ideal</div>
+    <div class="section-label es-text">Por qué Juan Carlos es el pre-sales ideal</div>
+    <div class="section-label en-text" style="display:none">Why Juan Carlos is the right pre-sales fit</div>
     <div class="presales-grid">
       <div class="presales-card featured">
         <div class="card-icon"><i class="ti ti-presentation-analytics"></i></div>
-        <h3>Demos y storytelling ejecutivo</h3>
-        <p>Ha presentado roadmaps SAC de 7 iniciativas a VPs de Finanzas y C-levels, construyendo narrativas que conectan tecnología con resultados de negocio medibles.</p>
+        <h3 class="es-text">Demos y storytelling ejecutivo</h3>
+        <h3 class="en-text" style="display:none">Executive demos & storytelling</h3>
+        <p class="es-text">Ha presentado roadmaps SAC de 7 iniciativas a VPs de Finanzas y C-levels, construyendo narrativas que conectan tecnología con resultados medibles de negocio.</p>
+        <p class="en-text" style="display:none">Has presented 7-initiative SAC roadmaps to Finance VPs and C-level executives, building narratives that connect technology to measurable business outcomes.</p>
         <div class="value-prop">
-          <div class="vp-label">Impacto en ventas</div>
-          <div class="vp-text">Capacidad de convertir demos técnicas en conversaciones de negocio que aceleran el ciclo de cierre.</div>
+          <div class="vp-label es-text">Impacto en ventas</div>
+          <div class="vp-label en-text" style="display:none">Sales impact</div>
+          <div class="vp-text es-text">Convierte demos técnicas en conversaciones de negocio que aceleran el ciclo de cierre.</div>
+          <div class="vp-text en-text" style="display:none">Turns technical demos into business conversations that accelerate the sales cycle.</div>
         </div>
       </div>
       <div class="presales-card">
         <div class="card-icon"><i class="ti ti-puzzle"></i></div>
-        <h3>Arquitectura de soluciones</h3>
-        <p>Diseña arquitecturas SAP Analytics de extremo a extremo: desde CDS Views y Live Data Connections hasta modelos SAC con actualización en tiempo real.</p>
+        <h3 class="es-text">Arquitectura de soluciones</h3>
+        <h3 class="en-text" style="display:none">Solution architecture</h3>
+        <p class="es-text">Diseña arquitecturas SAP Analytics de extremo a extremo: CDS Views, Live Data Connections, modelos SAC con actualización en tiempo real y Power BI para finanzas.</p>
+        <p class="en-text" style="display:none">Designs end-to-end SAP Analytics architectures: CDS Views, Live Data Connections, real-time SAC models, and Power BI for finance departments.</p>
         <div class="value-prop">
-          <div class="vp-label">Impacto en ventas</div>
-          <div class="vp-text">Construye propuestas técnicas creíbles y responde con autoridad preguntas de arquitectura en evaluaciones competitivas.</div>
+          <div class="vp-label es-text">Impacto en ventas</div>
+          <div class="vp-label en-text" style="display:none">Sales impact</div>
+          <div class="vp-text es-text">Construye propuestas técnicas creíbles y responde con autoridad en evaluaciones competitivas.</div>
+          <div class="vp-text en-text" style="display:none">Builds credible technical proposals and responds with authority in competitive evaluations.</div>
         </div>
       </div>
       <div class="presales-card">
         <div class="card-icon"><i class="ti ti-users"></i></div>
-        <h3>Discovery y stakeholder management</h3>
-        <p>Experiencia mapeando necesidades de múltiples stakeholders simultáneos (Finance, Auditoría, Revenue Management, TI) en proyectos multi-departamentales.</p>
+        <h3 class="es-text">Discovery y stakeholder management</h3>
+        <h3 class="en-text" style="display:none">Discovery & stakeholder management</h3>
+        <p class="es-text">Mapea necesidades de múltiples stakeholders simultáneos (Finance, Auditoría, Revenue Management, TI) en proyectos multi-departamentales y multi-país.</p>
+        <p class="en-text" style="display:none">Maps needs of multiple simultaneous stakeholders (Finance, Audit, Revenue Management, IT) across multi-department, multi-country projects.</p>
         <div class="value-prop">
-          <div class="vp-label">Impacto en ventas</div>
-          <div class="vp-text">Identifica rápidamente pain points reales y alinea la propuesta de valor de SAP con los objetivos de cada decisor.</div>
+          <div class="vp-label es-text">Impacto en ventas</div>
+          <div class="vp-label en-text" style="display:none">Sales impact</div>
+          <div class="vp-text es-text">Identifica pain points reales y alinea la propuesta de valor SAP con los objetivos de cada decisor.</div>
+          <div class="vp-text en-text" style="display:none">Identifies real pain points and aligns the SAP value proposition to each decision maker's goals.</div>
         </div>
       </div>
       <div class="presales-card">
         <div class="card-icon"><i class="ti ti-world"></i></div>
-        <h3>Alcance multi-industria & multi-región</h3>
-        <p>Ha entregado proyectos para Mondeléz, Danone, Nestlé, Sanofi, Pemex, Televisa, Banco Azteca y cadenas hoteleras multinacionales.</p>
+        <h3 class="es-text">Alcance multi-industria & multi-región</h3>
+        <h3 class="en-text" style="display:none">Multi-industry & multi-region reach</h3>
+        <p class="es-text">Clientes incluyen Mondeléz, Danone, Nestlé, Sanofi, Pemex, Televisa, Banco Azteca, Grupo Lomas, Princess Hotels y cadenas hoteleras multinacionales.</p>
+        <p class="en-text" style="display:none">Clients include Mondeléz, Danone, Nestlé, Sanofi, Pemex, Televisa, Banco Azteca, Grupo Lomas, Princess Hotels, and multinational hotel chains.</p>
         <div class="value-prop">
-          <div class="vp-label">Impacto en ventas</div>
-          <div class="vp-text">Referentes reales de industria que generan credibilidad inmediata en conversaciones de venta.</div>
+          <div class="vp-label es-text">Impacto en ventas</div>
+          <div class="vp-label en-text" style="display:none">Sales impact</div>
+          <div class="vp-text es-text">Referentes reales por industria que generan credibilidad inmediata con prospectos de distintos sectores.</div>
+          <div class="vp-text en-text" style="display:none">Real industry references that generate immediate credibility with prospects across sectors.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- EXPERIENCIA -->
+  <!-- ===== EXPERIENCE ===== -->
   <div id="tab-experience" class="tab-panel">
-    <div class="section-label">Trayectoria profesional</div>
+    <div class="section-label es-text">Trayectoria profesional</div>
+    <div class="section-label en-text" style="display:none">Professional experience</div>
+
     <div class="exp-item">
-      <div class="exp-company">Syntax <span class="badge"><i class="ti ti-circle-check"></i> Actual</span></div>
-      <div class="exp-role">Senior SAP BPC, SAC & Datasphere Consultant — AMS Analytics</div>
-      <div class="exp-period">Mar 2021 – Presente · Cancún, México</div>
+      <div class="exp-company">Syntax <span class="badge"><i class="ti ti-circle-check"></i> <span class="es-text">Actual</span><span class="en-text" style="display:none">Current</span></span></div>
+      <div class="exp-role es-text">Senior SAP BPC, SAC & Datasphere Consultant — AMS Analytics</div>
+      <div class="exp-role en-text" style="display:none">Senior SAP BPC, SAC & Datasphere Consultant — AMS Analytics</div>
+      <div class="exp-period">Mar 2021 – <span class="es-text">Presente</span><span class="en-text" style="display:none">Present</span> · Cancún, México</div>
       <ul class="exp-bullets">
-        <li>Implementó soluciones SAP SAC y BPC enterprise para clientes multinacionales, integrando ERP, CDS Views y fuentes externas para P&L en tiempo real.</li>
-        <li>Redujo esfuerzo manual hasta 40% mediante automatización de reporting y dashboards avanzados en SAC y Fiori.</li>
-        <li>Lideró ciclos de integración y pruebas en migraciones a SAP S/4HANA, garantizando continuidad operativa.</li>
-        <li>Actuó como trusted advisor para directores de Finanzas y Operaciones, alineando soluciones analytics con estrategia corporativa.</li>
-        <li>Diseñó modelos SAC con Live Data Connection y Acquire model con actualización horaria como solución interina de reporting.</li>
+        <li class="es-text">Implementó soluciones SAP SAC y BPC enterprise integrando ERP, CDS Views y fuentes externas para P&L en tiempo real para clientes multinacionales.</li>
+        <li class="en-text" style="display:none">Delivered SAP SAC and BPC enterprise solutions integrating ERP, CDS Views, and external sources for real-time P&L for multinational clients.</li>
+        <li class="es-text">Redujo esfuerzo manual hasta 40% mediante automatización de reporting y dashboards avanzados en SAC y Fiori.</li>
+        <li class="en-text" style="display:none">Reduced manual effort by up to 40% through reporting automation and advanced dashboards in SAC and Fiori.</li>
+        <li class="es-text">Lideró ciclos de integración y pruebas en migraciones a SAP S/4HANA, garantizando continuidad operativa.</li>
+        <li class="en-text" style="display:none">Led integration and testing cycles during SAP S/4HANA migrations, ensuring operational continuity.</li>
+        <li class="es-text">Actuó como trusted advisor para directores de Finanzas y Operaciones, alineando soluciones analytics con estrategia corporativa.</li>
+        <li class="en-text" style="display:none">Acted as trusted advisor to Finance and Operations directors, aligning analytics solutions with corporate strategy.</li>
       </ul>
     </div>
+
     <div class="exp-item">
-      <div class="exp-company">RCD Hotels (Royalton & Westin Cancún)</div>
-      <div class="exp-role">Business Analytics Director → BI Manager → SAP BPC Administrator</div>
+      <div class="exp-company">Royalton Hotels & Resorts <span class="exp-type es-text">Proyecto independiente</span><span class="exp-type en-text" style="display:none">Independent project</span></div>
+      <div class="exp-role es-text">Finance Analytics Lead — SAP Analytics Cloud</div>
+      <div class="exp-role en-text" style="display:none">Finance Analytics Lead — SAP Analytics Cloud</div>
+      <div class="exp-period es-text">Proyecto en curso · Cancún, México (incluye Westin Cancún)</div>
+      <div class="exp-period en-text" style="display:none">Ongoing project · Cancún, México (includes Westin Cancún)</div>
+      <ul class="exp-bullets">
+        <li class="es-text">Construyó dimensión de cuentas SAC (ROY_ACCOUNT_USALI, 685 miembros) estructurada bajo USALI 11th Edition para Westin Cancún.</li>
+        <li class="en-text" style="display:none">Built SAC Account Dimension (ROY_ACCOUNT_USALI, 685 members) structured under USALI 11th Edition for Westin Cancún.</li>
+        <li class="es-text">Diseñó un roadmap ejecutivo de 7 iniciativas SAC presentado a VP de Finanzas, con modelo de replicación de 30 minutos para P&L en tiempo real.</li>
+        <li class="en-text" style="display:none">Designed a 7-initiative SAC expansion roadmap presented to the VP of Finance, with a 30-minute replication model for near-real-time P&L.</li>
+        <li class="es-text">Evaluó propuesta técnico-económica de proveedor externo (Estel) para integración PLC–Power BI, identificando brechas de precio y alcance.</li>
+        <li class="en-text" style="display:none">Evaluated a vendor proposal (Estel) for PLC–Power BI integration, identifying pricing gaps and scope deficiencies.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-company">Princess Hotels and Resorts México <span class="exp-type es-text">Proyecto independiente</span><span class="exp-type en-text" style="display:none">Independent project</span></div>
+      <div class="exp-role es-text">Consultor — Implementación SAP Analytics Cloud, Finanzas</div>
+      <div class="exp-role en-text" style="display:none">Consultant — SAP Analytics Cloud Implementation, Finance</div>
+      <div class="exp-period es-text">Proyecto completado · Cancún, México</div>
+      <div class="exp-period en-text" style="display:none">Completed project · Cancún, México</div>
+      <ul class="exp-bullets">
+        <li class="es-text">Implementó SAP Analytics Cloud para el área de Finanzas, habilitando reporting consolidado y dashboards de desempeño para la cadena hotelera.</li>
+        <li class="en-text" style="display:none">Implemented SAP Analytics Cloud for the Finance department, enabling consolidated reporting and performance dashboards for the hotel chain.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-company">Grupo Lomas <span class="exp-type es-text">Proyecto independiente</span><span class="exp-type en-text" style="display:none">Independent project</span></div>
+      <div class="exp-role es-text">Consultor — Implementación Power BI, Finanzas</div>
+      <div class="exp-role en-text" style="display:none">Consultant — Power BI Implementation, Finance</div>
+      <div class="exp-period es-text">Proyecto completado · México</div>
+      <div class="exp-period en-text" style="display:none">Completed project · México</div>
+      <ul class="exp-bullets">
+        <li class="es-text">Implementó Power BI para las áreas de Finanzas del grupo, reemplazando procesos manuales con dashboards interactivos y modelos de datos estructurados.</li>
+        <li class="en-text" style="display:none">Implemented Power BI for Finance departments, replacing manual processes with interactive dashboards and structured data models.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-company">RCD Hotels (Hard Rock Hotels)</div>
+      <div class="exp-role es-text">Business Analytics Director → BI Manager → SAP BPC Administrator</div>
+      <div class="exp-role en-text" style="display:none">Business Analytics Director → BI Manager → SAP BPC Administrator</div>
       <div class="exp-period">Mar 2015 – Mar 2021 · Cancún, México</div>
       <ul class="exp-bullets">
-        <li>Dirigió la estrategia analytics end-to-end para portafolio hotelero multinacional, reemplazando reportes Excel manuales con soluciones SAP unificadas.</li>
-        <li>Entregó KPIs en tiempo real y dashboards de varianza que aceleraron insights ejecutivos para decisiones de revenue management.</li>
-        <li>Desarrolló y administró la plataforma SAP BPC para planificación financiera y consolidación multi-entidad.</li>
-        <li>Construyó rutinas de automatización que mejoraron la precisión del forecast y redujeron los ciclos de cierre financiero.</li>
+        <li class="es-text">Dirigió estrategia analytics end-to-end para portafolio hotelero multinacional, reemplazando reportes manuales con soluciones SAP unificadas.</li>
+        <li class="en-text" style="display:none">Led end-to-end analytics strategy for a multinational hotel portfolio, replacing manual reports with unified SAP solutions.</li>
+        <li class="es-text">Entregó KPIs en tiempo real y dashboards de varianza que aceleraron insights ejecutivos para decisiones de revenue management.</li>
+        <li class="en-text" style="display:none">Delivered real-time KPIs and variance dashboards that accelerated executive insights for revenue management decisions.</li>
+        <li class="es-text">Desarrolló y administró la plataforma SAP BPC para planificación financiera y consolidación multi-entidad.</li>
+        <li class="en-text" style="display:none">Developed and administered the SAP BPC platform for financial planning and multi-entity consolidation.</li>
       </ul>
     </div>
+
     <div class="exp-item">
       <div class="exp-company">Indra</div>
       <div class="exp-role">SAP BPC Senior Consultant</div>
-      <div class="exp-period">May 2014 – Mar 2015 · Ciudad de México</div>
+      <div class="exp-period">May 2014 – Mar 2015 · <span class="es-text">Ciudad de México</span><span class="en-text" style="display:none">Mexico City</span></div>
       <ul class="exp-bullets">
-        <li>Arquitectó soluciones de planeación y forecast SAP BPC para clientes enterprise, asegurando plataformas escalables y conformes a regulación.</li>
+        <li class="es-text">Arquitectó soluciones de planeación y forecast SAP BPC para clientes enterprise, asegurando plataformas escalables y conformes a regulación.</li>
+        <li class="en-text" style="display:none">Architected SAP BPC planning and forecasting solutions for enterprise clients, ensuring scalable and compliant platforms.</li>
       </ul>
     </div>
+
     <div class="exp-item">
       <div class="exp-company">Intellego</div>
       <div class="exp-role">EPM & Information Management Senior Consultant</div>
-      <div class="exp-period">Ago 2011 – Abr 2014 · Ciudad de México</div>
+      <div class="exp-period"><span class="es-text">Ago</span><span class="en-text" style="display:none">Aug</span> 2011 – <span class="es-text">Abr</span><span class="en-text" style="display:none">Apr</span> 2014 · <span class="es-text">Ciudad de México</span><span class="en-text" style="display:none">Mexico City</span></div>
       <ul class="exp-bullets">
-        <li>Entregó soluciones SAP BPC, Hyperion y BI para Mondeléz, Danone, Monsanto, Televisa y Pemex.</li>
-        <li>Construyó pipelines de reporting automatizados que redujeron tiempos de entrega y aumentaron la agilidad de negocio.</li>
+        <li class="es-text">Entregó soluciones SAP BPC, Hyperion y BI para Mondeléz, Danone, Monsanto, Televisa y Pemex.</li>
+        <li class="en-text" style="display:none">Delivered SAP BPC, Hyperion, and BI solutions for Mondeléz, Danone, Monsanto, Televisa, and Pemex.</li>
+        <li class="es-text">Construyó pipelines de reporting automatizados, reduciendo tiempos de entrega y aumentando la agilidad de negocio.</li>
+        <li class="en-text" style="display:none">Built automated reporting pipelines, reducing delivery times and increasing business agility.</li>
       </ul>
     </div>
+
     <div class="exp-item">
       <div class="exp-company">BIS Soluciones · Banco Azteca · Financiera Independencia</div>
       <div class="exp-role">BI Consultant / Project Leader / Information Analyst</div>
       <div class="exp-period">2004 – 2011</div>
       <ul class="exp-bullets">
-        <li>Construyó arquitectura de datos enterprise y sistemas de reporting para banca y servicios financieros.</li>
-        <li>Entregó cubos OLAP y procesos ETL para dashboards ejecutivos de decisión comercial y financiera.</li>
+        <li class="es-text">Construyó arquitectura de datos enterprise y sistemas de reporting para banca y servicios financieros (Sanofi, Nestlé, Iké Asistencia).</li>
+        <li class="en-text" style="display:none">Built enterprise data architecture and reporting systems for banking and financial services (Sanofi, Nestlé, Iké Asistencia).</li>
+        <li class="es-text">Entregó cubos OLAP y procesos ETL para dashboards ejecutivos de decisión comercial y financiera.</li>
+        <li class="en-text" style="display:none">Delivered OLAP cubes and ETL processes for executive dashboards supporting commercial and financial decisions.</li>
       </ul>
     </div>
   </div>
 
-  <!-- SKILLS -->
+  <!-- ===== SKILLS ===== -->
   <div id="tab-skills" class="tab-panel">
-    <div class="section-label">Stack técnico & competencias</div>
+    <div class="section-label es-text">Stack técnico & competencias</div>
+    <div class="section-label en-text" style="display:none">Technical stack & competencies</div>
     <div class="skill-grid">
       <div class="skill-group">
         <div class="skill-group-title">SAP Core Analytics</div>
@@ -235,7 +337,8 @@ footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:var(--color-te
         <span class="skill-tag">SAP Fiori</span>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Arquitectura & Data Engineering</div>
+        <div class="skill-group-title es-text">Arquitectura & Data Engineering</div>
+        <div class="skill-group-title en-text" style="display:none">Architecture & Data Engineering</div>
         <span class="skill-tag">CDS Views</span>
         <span class="skill-tag">Live Data Connection</span>
         <span class="skill-tag">OData / InA Protocol</span>
@@ -244,14 +347,16 @@ footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:var(--color-te
         <span class="skill-tag">SAP HANA</span>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Integración SAP</div>
+        <div class="skill-group-title es-text">Integración SAP</div>
+        <div class="skill-group-title en-text" style="display:none">SAP Integration</div>
         <span class="skill-tag">SD / MM / FI / CO</span>
         <span class="skill-tag">SAP S/4HANA</span>
         <span class="skill-tag">SAP ERP</span>
         <span class="skill-tag">CRM / Middleware</span>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Pre-Sales & Consultoría</div>
+        <div class="skill-group-title es-text">Pre-Sales & Consultoría</div>
+        <div class="skill-group-title en-text" style="display:none">Pre-Sales & Consulting</div>
         <span class="skill-tag">Solution Architecture</span>
         <span class="skill-tag">Executive Presentations</span>
         <span class="skill-tag">RFP / RFI Response</span>
@@ -260,29 +365,36 @@ footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:var(--color-te
         <span class="skill-tag">Stakeholder Management</span>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Finanzas & Planificación</div>
+        <div class="skill-group-title es-text">Finanzas & Planificación</div>
+        <div class="skill-group-title en-text" style="display:none">Finance & Planning</div>
         <span class="skill-tag">Financial Planning & Consolidation</span>
         <span class="skill-tag">USALI Reporting</span>
         <span class="skill-tag">P&L Management</span>
         <span class="skill-tag">Budgeting & Forecasting</span>
+        <span class="skill-tag">Revenue Management</span>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Otros</div>
+        <div class="skill-group-title es-text">Otras herramientas</div>
+        <div class="skill-group-title en-text" style="display:none">Other tools</div>
         <span class="skill-tag">Power BI</span>
         <span class="skill-tag">IBM Cognos</span>
         <span class="skill-tag">Hyperion</span>
-        <span class="skill-tag">Inglés (Full Professional)</span>
-        <span class="skill-tag">Francés (Working)</span>
+        <span class="skill-tag">Odoo</span>
+        <span class="skill-tag">English (Full Professional)</span>
+        <span class="skill-tag">French (Working)</span>
       </div>
     </div>
   </div>
 
-  <!-- ATS -->
+  <!-- ===== ATS ===== -->
   <div id="tab-ats" class="tab-panel">
-    <div class="section-label">Optimización ATS</div>
+    <div class="section-label es-text">Optimización ATS — palabras clave</div>
+    <div class="section-label en-text" style="display:none">ATS Optimization — keywords</div>
     <div class="ats-section">
-      <div class="ats-intro">Keywords optimizadas para sistemas ATS (Workday, Taleo, Greenhouse) para el rol de <em>SAP Pre-Sales Analytics Specialist</em>.</div>
-      <div style="margin-bottom:12px;font-size:12px;font-weight:600;color:var(--color-text-secondary)">Primarias</div>
+      <div class="ats-intro es-text">Keywords optimizadas para sistemas ATS (Workday, Taleo, Greenhouse) para el rol de <em>SAP Pre-Sales Analytics Specialist</em>.</div>
+      <div class="ats-intro en-text" style="display:none">Keywords optimized for ATS systems (Workday, Taleo, Greenhouse) for the <em>SAP Pre-Sales Analytics Specialist</em> role.</div>
+      <div style="margin-bottom:10px;font-size:12px;font-weight:600;color:var(--text2)" class="es-text">Primarias</div>
+      <div style="margin-bottom:10px;font-size:12px;font-weight:600;color:var(--text2)" class="en-text" style="display:none">Primary</div>
       <div class="ats-keywords">
         <span class="ats-kw primary">SAP Analytics Cloud</span>
         <span class="ats-kw primary">SAP BPC</span>
@@ -296,8 +408,10 @@ footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:var(--color-te
         <span class="ats-kw primary">EPM</span>
         <span class="ats-kw primary">Demo Environment</span>
         <span class="ats-kw primary">RFP Response</span>
+        <span class="ats-kw primary">Power BI</span>
       </div>
-      <div style="margin:16px 0 8px;font-size:12px;font-weight:600;color:var(--color-text-secondary)">Secundarias</div>
+      <div style="margin:14px 0 8px;font-size:12px;font-weight:600;color:var(--text2)" class="es-text">Secundarias</div>
+      <div style="margin:14px 0 8px;font-size:12px;font-weight:600;color:var(--text2)" class="en-text" style="display:none">Secondary</div>
       <div class="ats-keywords">
         <span class="ats-kw">SAP Fiori</span><span class="ats-kw">CDS Views</span><span class="ats-kw">OLAP</span>
         <span class="ats-kw">ETL</span><span class="ats-kw">Business Intelligence</span><span class="ats-kw">FP&A</span>
@@ -305,16 +419,18 @@ footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:var(--color-te
         <span class="ats-kw">Stakeholder Management</span><span class="ats-kw">Executive Presentations</span>
         <span class="ats-kw">SAP HANA</span><span class="ats-kw">Financial Consolidation</span>
         <span class="ats-kw">Live Data Connection</span><span class="ats-kw">Revenue Management</span>
+        <span class="ats-kw">USALI</span><span class="ats-kw">Hospitality Analytics</span>
       </div>
     </div>
-    <div style="margin-top:1.5rem">
-      <div class="section-label">Educación & Certificaciones</div>
-      <div class="cert-list">
-        <div class="cert-item"><i class="ti ti-school"></i><span class="cert-text">Diploma en Planificación Financiera & Servicios — Universidad Panamericana (2012)</span></div>
-        <div class="cert-item"><i class="ti ti-certificate"></i><span class="cert-text">Oracle Data Integration 11g Sales Specialist</span></div>
-        <div class="cert-item"><i class="ti ti-chart-dots"></i><span class="cert-text">Data Analytics: Dashboards vs. Data Stories</span></div>
-        <div class="cert-item"><i class="ti ti-brain"></i><span class="cert-text">Strategic Thinking (LinkedIn Learning)</span></div>
-      </div>
+    <div class="section-label" style="margin-top:1.5rem">
+      <span class="es-text">Educación & Certificaciones</span>
+      <span class="en-text" style="display:none">Education & Certifications</span>
+    </div>
+    <div class="cert-list">
+      <div class="cert-item"><i class="ti ti-school"></i><span class="cert-text es-text">Diploma en Planificación Financiera & Servicios — Universidad Panamericana (2012)</span><span class="cert-text en-text" style="display:none">Diploma in Financial Planning & Services — Universidad Panamericana (2012)</span></div>
+      <div class="cert-item"><i class="ti ti-certificate"></i><span class="cert-text">Oracle Data Integration 11g Sales Specialist</span></div>
+      <div class="cert-item"><i class="ti ti-chart-dots"></i><span class="cert-text es-text">Data Analytics: Dashboards vs. Data Stories</span><span class="cert-text en-text" style="display:none">Data Analytics: Dashboards vs. Data Stories</span></div>
+      <div class="cert-item"><i class="ti ti-brain"></i><span class="cert-text">Strategic Thinking (LinkedIn Learning)</span></div>
     </div>
   </div>
 
@@ -322,12 +438,39 @@ footer{text-align:center;padding:2rem 0 1rem;font-size:12px;color:var(--color-te
 </div>
 
 <script>
+let currentLang = 'es';
+let currentTheme = 'light';
+
+function toggleTheme(){
+  currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', currentTheme === 'dark' ? 'dark' : '');
+  document.getElementById('theme-icon').className = currentTheme === 'dark' ? 'ti ti-sun' : 'ti ti-moon';
+  document.getElementById('theme-label').textContent = currentTheme === 'dark' ? 'Light mode' : 'Dark mode';
+}
+
+function setLang(lang){
+  currentLang = lang;
+  document.querySelectorAll('.es-text').forEach(el => el.style.display = lang === 'es' ? '' : 'none');
+  document.querySelectorAll('.en-text').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.textContent = btn.getAttribute('data-' + lang) || btn.textContent;
+  });
+  document.getElementById('lang-es').className = 'toggle-btn' + (lang === 'es' ? ' lang-active' : '');
+  document.getElementById('lang-en').className = 'toggle-btn' + (lang === 'en' ? ' lang-active' : '');
+  document.getElementById('hero-title').textContent = lang === 'es'
+    ? 'SAP Pre-Sales Analytics Specialist · BPC · SAC · Datasphere · S/4HANA Embedded Analytics'
+    : 'SAP Pre-Sales Analytics Specialist · BPC · SAC · Datasphere · S/4HANA Embedded Analytics';
+}
+
 function showTab(id, btn){
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
   btn.classList.add('active');
 }
+
+// Init
+document.getElementById('lang-es').classList.add('lang-active');
 </script>
 </body>
 </html>
